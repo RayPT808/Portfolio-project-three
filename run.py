@@ -17,15 +17,24 @@ def get_weight_data():
     """
     Get the body weight figure based on the input from the user
     """
+    while True:
 
-    print("Please enter your bodyweight in kilograms")
-    print("Data should be one number")
-    print("Example: 73\n")
+        print("Please enter your bodyweight in kilograms")
+        print("Data should be one number")
+        print("Example: 73\n")
 
-    data_str = input("Enter your weight here: ")
+        data_str = input("Enter your weight here: ")
+        
+        weight_data = data_str.split(",")
+        
+
+        if validate_data(weight_data):
+            print("Data is valid!")
+            break
     
-    weight_data = data_str.split(",")
-    validate_data(weight_data)
+    return weight_data
+
+
 
 def validate_data(values):
     """
@@ -40,7 +49,9 @@ def validate_data(values):
                 f"Exactly 1 value reuired, you provided {len(values)}"
             )
     except ValueError as e:
-        print(f"Invalid data: {e}, please try again.\n")        
+        print(f"Invalid data: {e}, please try again.\n")
+        return False        
+    
+    return True
 
-
-get_weight_data()
+data = get_weight_data()
