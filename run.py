@@ -54,4 +54,15 @@ def validate_data(values):
     
     return True
 
+def update_weight_worksheet(data):
+    """
+    Update body weight worksheet, add new row with provided value." 
+    """
+    print("Updating weight worksheet...\n")
+    weight_worksheet = SHEET.worksheet("weight")
+    weight_worksheet.append_row(data)
+    print("Weight worksheet updated successfully.\n")
+
 data = get_weight_data()
+weight_data = [int(num) for num in data]
+update_weight_worksheet(weight_data)
