@@ -34,6 +34,7 @@ def validate_data(values):
     or if there isn't exactly 1 value.
     """
     try:
+        [int(value) for value in values]
         if len(values) != 1:
             raise ValueError(
                 f"Exactly 1 value reuired, you provided {len(values)}"
