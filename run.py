@@ -13,16 +13,33 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('bmi_calculator')
 
 
-def get_tracker_data():
+def get_weight_data():
     """
-    Get the trackers's figure based on the input from the user
+    Get the body weight figure based on the input from the user
     """
 
     print("Please enter your bodyweight in kilograms")
-    print("Data should be six numbers, separated by commas")
-    print("Example: 55,62,77,69,91,83\n")
+    print("Data should be one number")
+    print("Example: 73\n")
 
     data_str = input("Enter your weight here: ")
-    print(f"The data provided is {data_str}")
+    
+    weight_data = data_str.split(",")
+    validate_data(weight_data)
 
-get_tracker_data()
+def validate_data(values):
+    """
+    Inside the try, converts all string values into integers.
+    Raises ValueError if strings cannot be converted into int,
+    or if there isn't exactly 1 value.
+    """
+    try:
+        if len(values) != 1:
+            raise ValueError(
+                f"Exactly 1 value reuired, you provided {len(values)}"
+            )
+    except ValueError as e:
+        print(f"Invalid data: {e}, please try again.\n")        
+
+
+get_weight_data()
