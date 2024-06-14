@@ -2,6 +2,7 @@ import gspread
 from google.oauth2.service_account import Credentials
 from datetime import datetime
 
+# Google Sheets API setup
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
@@ -54,13 +55,13 @@ def determine_bmi_category(bmi):
     Determine the BMI category.
     """
     if bmi < 18.5:
-        print("You are underweight.")
+        return "You are underweight."
     elif 18.5 <= bmi < 24.9:
-        print("You have a normal weight.")
+        return "You have a normal weight."
     elif 24.9 <= bmi < 29.9:
-        print("You are overweight.")
+        return "You are overweight."
     else:
-        print("You are obese.")
+        return "You are obese."
 
 def calculate_weight_change_needed(weight, height):
     """
@@ -74,31 +75,33 @@ def calculate_weight_change_needed(weight, height):
 
     if weight < min_normal_weight:
         weight_needed = min_normal_weight - weight
-        print(f"You need to gain at least {round(weight_needed, 2)} kg to reach the normal BMI category.")
+        return f"You need to gain at least {round(weight_needed, 2)} kg to reach the normal BMI category."
     elif weight > max_normal_weight:
         weight_needed = weight - max_normal_weight
-        print(f"You need to lose at least {round(weight_needed, 2)} kg to reach the normal BMI category.")
+        return f"You need to lose at least {round(weight_needed, 2)} kg to reach the normal BMI category."
     else:
-        print("You are already within the normal BMI category.")        
-
+        return "You are already within the normal BMI category."        
+    
 def main():
     """
     Run all program functions
     """
+    date = datetime.now().strftime("%Y-%m-%d")
     weight = get_float_input("weight", "weight")
     height = get_float_input("height", "height")
 
     update_worksheet([weight], "weight")
-    update_worksheet([height], "height")
+    update_worksheet(["height"], "height")
 
     bmi = calculate_bmi(weight, height)
+    bmi_category = determine_bmi_category(bmi)
+    weight_change_needed = calculate_weight_change_needed(weight, height)
+
     print(f"Your BMI is {bmi}")
+    print(f"BMI Category: {bmi_category}")
+    print(f"Weight change needed: {weight_change_needed}")
 
-    determine_bmi_category(bmi)
-    calculate_weight_change_needed(weight, height)
-
-
-    update_worksheet([bmi], "bmi")
+    update_worksheet([date, weight, height, bmi, bmi_category, weight_change_needed], "bmi")
 
 if __name__ == "__main__":
     print("Welcome to the Body Mass Index calculator")
