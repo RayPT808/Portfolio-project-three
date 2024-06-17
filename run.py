@@ -44,6 +44,19 @@ def update_worksheet(data, sheet_name):
     worksheet.append_row(data)
     print(f"{sheet_name.capitalize()} worksheet updated successfully.\n")
 
+def delete_last_entry(sheet_name):
+    """
+    Delete the last entry in the specified worksheet.
+    """
+    worksheet = SHEET.worksheet(sheet_name)
+    last_row = len(worksheet.get_all_values())
+    
+    if last_row > 0:
+        worksheet.delete_rows(last_row)
+        print(f"Last entry in {sheet_name} worksheet deleted successfully.\n")
+    else:
+        print(f"No entries found in {sheet_name} worksheet to delete.\n")
+
 def calculate_bmi(weight, height):
     """
     Calculate the BMI given weight in kilograms and height in meters.
@@ -102,6 +115,10 @@ def main():
     print(f"Weight change needed: {weight_change_needed}")
 
     update_worksheet([date, weight, height, bmi, bmi_category, weight_change_needed], "bmi")
+
+    delete_choice = input("Do you want to delete the last entry? (yes/no): ").strip().lower()
+    if delete_choice == "yes":
+        delete_last_entry("bmi")
 
 if __name__ == "__main__":
     print("Welcome to the Body Mass Index calculator")
