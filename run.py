@@ -105,9 +105,6 @@ while True:
     weight = get_float_input("weight", "weight")
     height = get_float_input("height", "height")
 
-    update_worksheet([weight], "weight")
-    update_worksheet([height], "height")
-
     bmi = calculate_bmi(weight, height)
     bmi_category = determine_bmi_category(bmi)
     weight_change_needed = calculate_weight_change_needed(weight, height)
