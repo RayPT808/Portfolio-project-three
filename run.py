@@ -21,7 +21,8 @@ def get_float_input(prompt, data_type):
     The data_type specifies whether the input is 'weight' or 'height'.
     """
     while True:
-        print(f"Please enter your {data_type} in kilograms" if data_type == "weight" else f"Please enter your {data_type} in meters")
+        print(f"Please enter your {data_type} in kilograms" if data_type == "weight"
+         else f"Please enter your {data_type} in meters")
         print("Data should be a number")
         print(f"Example: {'73' if data_type == 'weight' else '1.85'}\n")
 
@@ -35,6 +36,7 @@ def get_float_input(prompt, data_type):
         except ValueError as e:
             print(f"Invalid data: {e}, please try again.\n")
 
+
 def update_worksheet(data, sheet_name):
     """
     Update the specified worksheet with the provided data.
@@ -43,6 +45,7 @@ def update_worksheet(data, sheet_name):
     worksheet = SHEET.worksheet(sheet_name)
     worksheet.append_row(data)
     print(f"{sheet_name.capitalize()} worksheet updated successfully.\n")
+
 
 def delete_last_entry(sheet_name):
     """
@@ -57,11 +60,13 @@ def delete_last_entry(sheet_name):
     else:
         print(f"No entries found in {sheet_name} worksheet to delete.\n")
 
+
 def calculate_bmi(weight, height):
     """
     Calculate the BMI given weight in kilograms and height in meters.
     """
     return round(weight / (height ** 2), 2)
+
 
 def determine_bmi_category(bmi):
     """
@@ -76,9 +81,11 @@ def determine_bmi_category(bmi):
     else:
         return "You are obese."
 
+
 def calculate_weight_change_needed(weight, height):
     """
-    Calculate the weight change needed to fall into the normal BMI category (18.5 to 24.9).
+    Calculate the weight change needed,
+    to fall into the normal BMI category (18.5 to 24.9).
     """
     normal_bmi_min = 18.5
     normal_bmi_max = 24.9
@@ -93,7 +100,9 @@ def calculate_weight_change_needed(weight, height):
         weight_needed = weight - max_normal_weight
         return f"You need to lose at least {round(weight_needed, 2)} kg to reach the normal BMI category."
     else:
-        return "You are already within the normal BMI category."        
+        return "You are already within the normal BMI category."
+        
+
     
 def main():
     """
