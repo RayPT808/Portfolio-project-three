@@ -97,14 +97,16 @@ def calculate_weight_change_needed(weight, height):
     
 def main():
     """
-    Run all program functions
+    Run all program functions as a loop
     """
+
+while True:
     date = datetime.now().strftime("%Y-%m-%d")
     weight = get_float_input("weight", "weight")
     height = get_float_input("height", "height")
 
     update_worksheet([weight], "weight")
-    update_worksheet(["height"], "height")
+    update_worksheet([height], "height")
 
     bmi = calculate_bmi(weight, height)
     bmi_category = determine_bmi_category(bmi)
@@ -119,6 +121,12 @@ def main():
     delete_choice = input("Do you want to delete the last entry? (yes/no): ").strip().lower()
     if delete_choice == "yes":
         delete_last_entry("bmi")
+
+    continue_choice = input("Do you want to calculate again? (yes/no): ").strip().lower()
+    if continue_choice != "yes":
+        print("Thank you for using the Body Mass Index calculator. Goodbye!")
+        break
+           
 
 if __name__ == "__main__":
     print("Welcome to the Body Mass Index calculator")
