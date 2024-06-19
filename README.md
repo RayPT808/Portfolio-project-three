@@ -1,32 +1,25 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# BMI Calculator: a body mass index calculation app
 
-Welcome,
+'BMI Calculator' is a command-line-interface (CLI) health app hosted as an app on Heroku, written in Python.
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **May 14, 2024**
+## Purpose 
+The objective of this app is to provide the user with a guidence to reach and maintain healthy body weight. Through calculation of
+body mass index, the application will update the user about the current body weight range and let's the user track the changes over 
+time.
 
-## Reminders
+## Requirement Gathering and Planning
 
-- Your code must be placed in the `run.py` file
-- Your dependencies must be placed in the `requirements.txt` file
-- Do not edit any of the other files or your code may not deploy properly
+Before starting the coding for this project, I took the time to think about how to set up the architecture of this app, the layout of the output on the console and the functionality required to provide a good user experience. As the CI study material advised, I kept it simple,
+and I tried to follow a 'linear' logic.
 
-## Creating the Heroku app
+! [wireframelogic](documentation/wireframelogic.jpg)
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+### User Demographics, Stories and Needs
 
-1. `heroku/python`
-2. `heroku/nodejs`
+#### Target Demographic
+This app is useful for anyone wanting to track and control their finances regardless of age, income or profession. Some examples of such people are: 
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+- Students: this group of people tend to be younger, have a smaller budget and just starting to manage their own finances. Keeping track to avoid overspending would be useful to them.
+- Families: multiple adults working from a single budget with a wide variety of expenses including childcare, may need to keep a close eye on their finances to ensure that their outgoings don't exceed their income.
+- Debt repayers: people who are trying to actively reduce their debt such as student loans or credit card debts, benefit from the use of this app because they can manage their spending to ensure they have enough for a payment against their debt at the end of the month.
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
-
-Connect your GitHub repository and deploy as normal.
-
-## Constraints
-
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
-
----
-
-Happy coding!
