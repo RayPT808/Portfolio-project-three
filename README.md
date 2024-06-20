@@ -147,7 +147,7 @@ I also completed an end-to-end test covering these aspects, at milestones throug
 
 
 ### Important
-- At this stage there still now high or low values set to avoid extreme, non realistic results.
+- At this stage there is still no high or low values set to avoid extreme, non realistic results.
 - The calculation will go ahead even if someone would put in 500 kg's as body weight or 3.78 as height.
 ![Extreme values](documentation/extremevalues.png)
 
@@ -191,6 +191,10 @@ These are the steps I took to set up my infrastructure and deploy my app:
 ### APIs and Third Party Libraries
 1. [Google Sheets API: 'gspread'](https://docs.gspread.org/en/v6.0.0/) - This was installed to provide access to the associated spreadsheet which will hold all the data for BMI calculator.
 2. [Date/Time Module: 'datetime'](https://docs.python.org/3/library/datetime.html) - This was installed to provide dates to work with, so a history of body weight and body mass index change can be made.
+
+### BMI 
+1. Calculation and formula of body mass index was taken from (https://www.diabetes.ca/resources/tools---resources/body-mass-index-(bmi)-calculator#:~:text=Body%20Mass%20Index%20is%20a,range%20is%2018.5%20to%2024.9.)
+2. BMI chart to determine categories was taken from (https://calculatorsworld.com/health/bmi-chart-men-women-metric/#google_vignette)
 
 ### Sources of Learning
 I referred back to the Love Sandwiches Walkthrough Project set up videos to remind me how to set up the APIs, credentials and files before starting coding.
