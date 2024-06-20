@@ -151,6 +151,10 @@ I also completed an end-to-end test covering these aspects, at milestones throug
 - The calculation will go ahead even if someone would put in 500 kg's as body weight or 3.78 as height.
 ![Extreme values](documentation/extremevalues.png)
 
+-Looking at other bmi calculators online this seems to be a common problem
+
+![Extreme bmi](documantation/)
+
 - For future improvement I'm looking for the pricipal that could be implemented to avoid extreme results.
 
 ## Code Validation
