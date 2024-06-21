@@ -163,14 +163,16 @@ I also completed an end-to-end test covering these aspects, at milestones throug
 
 - For future improvement I'm looking for the pricipal that could be implemented to avoid extreme results.
 
-## Code Validation
-PEP8 validation using the Code Institute Python Linter was completed at milestones throughout the project and once right at the end. All errors given were resolved each time. 
+### Code Validation
+PEP8 validation using the Code Institute Python Linter was completed at milestones throughout the project and once right at the end. Mutiple errors of indentation, blank line whtitespace and long lines were found at the beginning.
 
-## Browser compatibility
+![Pip8 errors](documentation/pip8linterbugs.png) 
+
+### Browser compatibility
 Tested the application on **Chrome**, **Safari**, **Firefox**.
 Appearance normal, functions working.
 
-## Unfixed Bugs
+### Unfixed Bugs
 
 Not that I am aware of at this stage.
 
