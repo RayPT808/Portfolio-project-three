@@ -37,7 +37,7 @@ on energy.
 | ...receive specific information with regards of my weight. | ...I will have a clear number to gain or lose. |
 | ...I want to save my calculation. | ...I can start tracking my weight change, bmi change over time. |
 | ...to be able to re-do the calculation. | ...in case any of my details were not accurate, I could repeat the calculation. |
-| ...to be able to delete my last calculation, results. | ...noone else could access my details, or I just want to repeat it at a different time. |
+| ...to be able to delete my last calculation, results. | ...no one else could access my details, or I just want to repeat it at a different time. |
 | ...have a clear and intuitive method of navigating through the app via the command line. | ...I can easily navigate and use the app. |
 
 ## Technologies Used
@@ -147,7 +147,7 @@ I also completed an end-to-end test covering these aspects, at milestones throug
 
 
 ### Important
-- At this stage there is still no high or low values set to avoid extreme, non realistic results.
+- At this stage there are still no high or low values set to avoid extreme, non realistic results.
 - The calculation will go ahead even if someone would put in 500 kg's as body weight or 3.78 as height.
 ![Extreme values](documentation/extremevalues.png)
 
@@ -162,11 +162,16 @@ I also completed an end-to-end test covering these aspects, at milestones throug
 ![Extreme bmi2](documentation/extremebmi2.png)
 
 - For future improvement I'm looking for the pricipal that could be implemented to avoid extreme results.
+- An alternative solution would be to display a second, confirmation message for the user just before triggering the calculation.
 
 ### Code Validation
-PEP8 validation using the Code Institute Python Linter was completed at milestones throughout the project and once right at the end. Mutiple errors of indentation, blank line whtitespace and long lines were found at the beginning.
+PEP8 validation using the Code Institute Python Linter was completed at milestones throughout the project and once right at the end. Mutiple errors of indentation, blank line whtitespace and long lines were found.
 
-![Pip8 errors](documentation/pip8linterbugs.png) 
+![Pip8 errors](documentation/pip8linterbugs.png)
+
+Fixed the errors mentioned above by staying with the current set of code. With more time avilable another approach would have been to re-factor some of the code.
+
+![Fixed errors](documentation/fixedbugs.png)
 
 ### Browser compatibility
 Tested the application on **Chrome**, **Safari**, **Firefox**.
