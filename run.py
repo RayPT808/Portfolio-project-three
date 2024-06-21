@@ -7,7 +7,7 @@ SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
     "https://www.googleapis.com/auth/drive"
-    ]
+]
 
 CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
@@ -21,8 +21,9 @@ def get_float_input(prompt, data_type):
     The data_type specifies whether the input is 'weight' or 'height'.
     """
     while True:
-        print(f"Please enter your {data_type} in kilograms" if data_type == "weight"
-         else f"Please enter your {data_type} in meters")
+        print(f"Please enter your {data_type} in kilograms"
+              if data_type == "weight"
+              else f"Please enter your {data_type} in meters")
         print("Data should be a number")
         print(f"Example: {'73' if data_type == 'weight' else '1.85'}\n")
 
@@ -53,7 +54,7 @@ def delete_last_entry(sheet_name):
     """
     worksheet = SHEET.worksheet(sheet_name)
     last_row = len(worksheet.get_all_values())
-    
+
     if last_row > 0:
         worksheet.delete_rows(last_row)
         print(f"Last entry in {sheet_name} worksheet deleted successfully.\n")
@@ -95,44 +96,51 @@ def calculate_weight_change_needed(weight, height):
 
     if weight < min_normal_weight:
         weight_needed = min_normal_weight - weight
-        return f"You need to gain at least {round(weight_needed, 2)} kg to reach the normal BMI category."
+        return (f"You need to gain at least {round(weight_needed, 2)} kg to "
+                f"reach the normal BMI category.")
     elif weight > max_normal_weight:
         weight_needed = weight - max_normal_weight
-        return f"You need to lose at least {round(weight_needed, 2)} kg to reach the normal BMI category."
+        return (f"You need to lose at least {round(weight_needed, 2)} kg to "
+                f"reach the normal BMI category.")
     else:
         return "You are already within the normal BMI category."
-        
 
-    
+
 def main():
     """
     Run all program functions as a loop
     """
 
-while True:
-    date = datetime.now().strftime("%Y-%m-%d")
-    weight = get_float_input("weight", "weight")
-    height = get_float_input("height", "height")
+    while True:
+        date = datetime.now().strftime("%Y-%m-%d")
+        weight = get_float_input("weight", "weight")
+        height = get_float_input("height", "height")
 
-    bmi = calculate_bmi(weight, height)
-    bmi_category = determine_bmi_category(bmi)
-    weight_change_needed = calculate_weight_change_needed(weight, height)
+        bmi = calculate_bmi(weight, height)
+        bmi_category = determine_bmi_category(bmi)
+        weight_change_needed = calculate_weight_change_needed(weight, height)
 
-    print(f"Your BMI is {bmi}")
-    print(f"BMI Category: {bmi_category}")
-    print(f"Weight change needed: {weight_change_needed}")
+        print(f"Your BMI is {bmi}")
+        print(f"BMI Category: {bmi_category}")
+        print(f"Weight change needed: {weight_change_needed}")
 
-    update_worksheet([date, weight, height, bmi, bmi_category, weight_change_needed], "bmi")
+        update_worksheet([date, weight, height, bmi, bmi_category,
+                         weight_change_needed], "bmi")
 
-    delete_choice = input("Do you want to delete the last entry? (yes/no): ").strip().lower()
-    if delete_choice == "yes":
-        delete_last_entry("bmi")
+        delete_choice = input(
+            "Do you want to delete the last entry? (yes/no): "
+        ).strip().lower()
+        if delete_choice == "yes":
+            delete_last_entry("bmi")
 
-    continue_choice = input("Do you want to calculate again? (yes/no): ").strip().lower()
-    if continue_choice != "yes":
-        print("Thank you for using the Body Mass Index calculator. Goodbye!")
-        break
-           
+        continue_choice = input(
+            "Do you want to calculate again? (yes/no): "
+        ).strip().lower()
+        if continue_choice != "yes":
+            print("""Thank you for using the Body Mass Index calculator. 
+            Goodbye!""")
+            break
+
 
 if __name__ == "__main__":
     print("Welcome to the Body Mass Index calculator")
